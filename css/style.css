@@ -5,6 +5,7 @@ body {
   color: black;
   min-width: 100vw;
   min-height: 100vh;
+  padding-top: 43px;
 }
 
 body::before {
@@ -50,4 +51,19 @@ body * {
 
 .error {
   color: red;
+}
+
+.main {
+  max-width: 500px;
+  margin: auto;
+  display: block;
+}
+
+.main h2 {
+  margin: 29px 0 8px;
+}
+
+.main a {
+  display: block;
+  margin: 8px 0;
 }
