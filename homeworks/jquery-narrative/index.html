@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Narrative</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="scene_01" class="scene">
+    <img src="img/panel_01.png" alt="">
+  </div>
+  <div id="scene_02" class="hidden scene">
+    <img src="img/panel_02.png" alt="">
+  </div>
+  <div id="scene_03" class="hidden scene">
+    <img src="img/panel_03.png" alt="">
+  </div>
+  <div id="scene_04" class="hidden scene">
+    <img src="img/panel_04.png" alt="">
+  </div>
+  <div id="scene_05" class="hidden scene">
+    <img src="img/panel_05.png" alt="">
+  </div>
+  <div id="scene_06" class="hidden scene">
+    <img src="img/panel_06.png" alt="">
+  </div>
+  <div id="scene_07" class="hidden scene">
+    <img src="img/panel_07.png" alt="">
+  </div>
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+  <script>
+
+    // $('.scene').click(function(){
+    //
+    // })
+    $('#scene_01').click(function(){
+      $('#scene_01').toggleClass('hidden')
+      $('#scene_02').toggleClass('hidden')
+    })
+    $('#scene_02').click(function(){
+      $('#scene_02').toggleClass('hidden')
+      $('#scene_03').toggleClass('hidden')
+    })
+    $('#scene_03').click(function(){
+      $('#scene_03').toggleClass('hidden')
+      $('#scene_04').toggleClass('hidden')
+    })
+    $('#scene_04').click(function(){
+      $('#scene_04').toggleClass('hidden')
+      $('#scene_05').toggleClass('hidden')
+    })
+    $('#scene_05').click(function(){
+      $('#scene_05').toggleClass('hidden')
+      $('#scene_06').toggleClass('hidden')
+    })
+    $('#scene_06').click(function(){
+      $('#scene_06').toggleClass('hidden')
+      $('#scene_07').toggleClass('hidden')
+    })
+    $('#scene_07').click(function(){
+      $('#scene_07').toggleClass('hidden')
+      $('#scene_01').toggleClass('hidden')
+    })
+  </script>
+</body>
+</html>

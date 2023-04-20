@@ -1,0 +1,13 @@
+img {
+  width: 50%;
+  margin: 30px auto auto;
+  display: block;
+}
+
+img:hover {
+  cursor: pointer;
+}
+
+.hidden {
+  display: none;
+}
