@@ -6,11 +6,20 @@ $(document).ready(function(){
   });
   $('#paint').click(function(){
     $('.paint_program').toggleClass('on');
+    $('.back_button').toggleClass('on');
   });
   $('#lemmings').click(function(){
     $('.lemmings_program').toggleClass('on');
+    $('.back_button').toggleClass('on');
   });
   $('#oregon').click(function(){
     $('.oregon_program').toggleClass('on');
+    $('.back_button').toggleClass('on');
+  });
+  $('#back_01').click(function(){
+    $('.paint_program').removeClass('on');
+    $('.lemmings_program').removeClass('on');
+    $('.oregon_program').removeClass('on');
+    $('.back_button').toggleClass('on');
   });
 });

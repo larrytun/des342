@@ -86,6 +86,7 @@ body {
 }
 
 .program {
+  cursor: pointer;
   width: 77px;
   height: 100%;
 }
@@ -140,17 +141,93 @@ body {
 
 .taskbar {
   position: absolute;
-  bottom: 0;
-  left: 0;
-  border: 2px solid;
+  bottom: -3px;
+  left: -1px;
+  border: 1px solid;
   border-bottom-color: #C0C0C0;
   border-right-color: #C0C0C0;
   border-left-color: #C0C0C0;
-  border-top-color: #fdf9fd;
-  width: calc(100% - 1px);
+  border-top-color: white;
+  width: calc(100% + 1px);
   height: 26px;
   background-color: #C0C0C0;
-  padding: 3px;
+  padding: 2px 3px 4px 3px;
+}
+
+.taskbar::before {
+  content: '';
+  position: absolute;
+  height: calc(100% + 1px);
+  width: 100%;
+  border: 1px solid;
+  border-top-color: #DFDFDF;
+  top: -1px;
+  left: 0;
+}
+
+.start_button, .back_button {
+  cursor: pointer;
+  background-color: #C0C0C0;
+  border: 1px solid;
+  border-bottom-color: #808080;
+  border-right-color: #808080;
+  border-left-color: #DFDFDF;
+  border-top-color: #DFDFDF;
+}
+
+.start_button {
+  position: relative;
+  width: 49px;
+  height: 100%;
+}
+
+.start_button img {
+  position: absolute;
+  height: auto;
+  width: 17px;
+  left: 2px;
+  top: 0;
+}
+
+.start_button p {
+  position: absolute;
+  font-size: 11px;
+  margin: 0;
+  top: 2px;
+  left: 21px;
+  font-weight: bold;
+}
+
+.back_button {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+  top: -35px;
+  font-size: 10px;
+  width: 73px;
+  height: 22px;
+  padding-top: 5px;
+  z-index: 9;
+  text-align: center;
+}
+
+.back_button.on {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.start_button::after, .back_button::after {
+  content: '';
+  width: calc(100% + 2px);
+  height: calc(100% + 2px);
+  position: absolute;
+  left: -1px;
+  top: -1px;
+  border: 1px solid;
+  border-bottom-color: black;
+  border-right-color: black;
+  border-left-color: white;
+  border-top-color: white;
 }
 
 .paint_program, .lemmings_program, .oregon_program {
