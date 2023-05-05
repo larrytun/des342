@@ -139,6 +139,20 @@ body {
   font-size: 13px;
 }
 
+.music_app {
+  position: absolute;
+  width: 390px;
+  height: 230px;
+  background-color: #C0C0C0;
+  left: 22px;
+  top: 30px;
+}
+
+.music_player img {
+  width: 64px;
+  height: 64px;
+}
+
 .taskbar {
   position: absolute;
   display: flex;

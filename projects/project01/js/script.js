@@ -28,6 +28,14 @@ $(document).ready(function(){
 
    $audioPlayer.on("timeupdate", updateTimePlayed);
 
+   $("#play").on("click", function () {
+       $audioPlayer[0].play();
+   });
+
+   $("#pause").on("click", function () {
+       $audioPlayer[0].pause();
+   });
+
    $("#previous-song").on("click", function () {
        const newIndex = currentSongIndex === 0 ? songs.length - 1 : currentSongIndex - 1;
        loadSong(newIndex);
