@@ -234,6 +234,23 @@ body {
   padding-top: 8px;
 }
 
+.music_player .buttons {
+  position: absolute;
+  top: 24px;
+  left: 205px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 179px;
+}
+
+.music_player button {
+  background-color: #C0C0C0;
+  position: relative;
+  width: 88px;
+  margin-bottom: 8px;
+}
+
 .music_player img {
   position: absolute;
   top: 85px;
@@ -299,7 +316,7 @@ body {
   left: 0;
 }
 
-.start_button, .back_button, .close_sm {
+.start_button, .back_button, .close_sm, .music_player button {
   cursor: pointer;
   background-color: #C0C0C0;
   border: 1px solid;
@@ -403,7 +420,7 @@ body {
   opacity: 1;
 }
 
-.start_button::after, .back_button::after, .close_sm::after, .music_app::after {
+.start_button::after, .back_button::after, .close_sm::after, .music_app::after, .music_player button::after {
   content: '';
   width: calc(100% + 2px);
   height: calc(100% + 2px);
