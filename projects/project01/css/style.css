@@ -185,6 +185,14 @@ body {
   display: inline-block;
 }
 
+.start_button::before {
+  right: -5px;
+}
+
+/*
+.start_button:hover {
+} */
+
 .start_button img {
   position: absolute;
   height: auto;
@@ -202,11 +210,25 @@ body {
   font-weight: bold;
 }
 
+.start_button::before, .clock::before {
+  content: '';
+  position: absolute;
+  height: calc(100% + 2px);
+  width: 0;
+  border: 1px solid;
+  right: -5px;
+  top: -1px;
+  border-right-color: white;
+  border-left-color: #808080;
+  border-top-color: #C0C0C0;
+  border-bottom-color: #C0C0C0;
+}
+
 .clock {
   position: relative;
   display: inline-flex;
   font-size: 10px;
-  width: 49px;
+  width: 50px;
   height: calc(100% + 1px);
   right: 0;
   top: -0.5px;
@@ -219,6 +241,10 @@ body {
   margin-bottom: 2px;
   padding: 4px;
   justify-content: flex-end;
+}
+
+.clock::before {
+  left: -4.5px;
 }
 
 .clock span {
