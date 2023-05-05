@@ -110,6 +110,9 @@ $(document).ready(function(){
   $('#music').click(function(){
     $('.music_app').addClass('on');
   });
+  $('#scan').click(function(){
+    $('.wrapper').addClass('scanning');
+  });
   $('#close-sm').click(function(){
     $('.music_app').removeClass('on');
   });
