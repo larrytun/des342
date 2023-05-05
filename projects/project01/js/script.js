@@ -1,20 +1,24 @@
 $(document).ready(function(){
   const songs = [
-       { title: "Seven Nation Army", src: "music/SevenNationArmy.mp3", album: "Elephant", albumArt: "img/whitestripes.jpg" },
+       { number: "01", title: "Seven Nation Army", src: "music/SevenNationArmy.mp3", album: "Elephant", artist: "The White Stripes", albumArt: "img/whitestripes.jpg" },
    ];
    let currentSongIndex = 0;
 
    const $audioPlayer = $("#audio-player");
+   const $songNumber = $("#song-number");
    const $songName = $("#song-name");
    const $albumName = $("#album-name");
+   const $artistName = $("#artist-name");
    const $albumArt = $("#album-art");
    const $currentTimePlayed = $("#current-time-played");
 
    function loadSong(index) {
        currentSongIndex = index;
        const song = songs[index];
+       $songNumber.text(song.number);
        $songName.text(song.title);
        $albumName.text(song.album);
+       $artistName.text(song.artist);
        $albumArt.attr("src", song.albumArt);
        $audioPlayer.attr("src", song.src);
    }
@@ -23,7 +27,7 @@ $(document).ready(function(){
        const currentTime = $audioPlayer[0].currentTime;
        const minutes = Math.floor(currentTime / 60);
        const seconds = Math.floor(currentTime % 60);
-       $currentTimePlayed.text(`${minutes}:${seconds < 10 ? "0" : ""}${seconds}`);
+       $currentTimePlayed.text(`${minutes < 10 ? "0" : ""}${minutes}:${seconds < 10 ? "0" : ""}${seconds}`);
    }
 
    $audioPlayer.on("timeupdate", updateTimePlayed);

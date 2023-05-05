@@ -75,14 +75,17 @@
             <div id="close-sm" class="close_sm"></div>
           </div>
           <div id="music-player" class="music_player">
+            <div class="music_time">[<span id="song-number"></span>]&nbsp;<span id="current-time-played">00:00</span></div>
             <img id="album-art" src="" alt="Album Art">
-            <div id="song-name"></div>
-            <div id="current-time-played">00:00</div>
+
             <audio id="audio-player" controls style="display: none;"></audio>
             <button id="play">Play</button>
             <button id="pause">Pause</button>
             <button id="previous-song">Previous</button>
             <button id="next-song">Next</button>
+            <div class="music_info artist"><u>A</u>rtist:&nbsp;<span id="artist-name" class="song_data"></span></div>
+            <div class="music_info track"><u>T</u>rack:&nbsp;<span id="song-name" class="song_data"></span></div>
+            <div class="music_info album"><u>A</u>lbum:&nbsp;<span id="album-name" class="song_data"></span></div>
           </div>
         </div>
         <div class="taskbar">
