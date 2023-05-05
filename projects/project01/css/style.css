@@ -290,6 +290,32 @@ body {
   left: 78px;
 }
 
+.window_footer {
+  position: absolute;
+  display: flex;
+  justify-content: space-between;
+  height: 6%;
+  width: 99.4%;
+  bottom: 1px;
+}
+
+.window_footer .half {
+  display: block;
+  width: 49.8%;
+  height: 100%;
+  border: inset 1px;
+  border-top-color: #bebebe;
+  border-left-color: #bebebe;
+  border-right-color: #DFDFDF;
+  border-bottom-color: #DFDFDF;
+  padding: 2px;
+}
+
+.half p {
+  margin: 0;
+  font-size: 8px;
+}
+
 .taskbar {
   position: absolute;
   display: flex;

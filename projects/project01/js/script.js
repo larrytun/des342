@@ -8,6 +8,8 @@ $(document).ready(function(){
      { number: "06", title: "Canned Heat", src: "music/CannedHeat.mp3", album: "Synkronized", artist: "Jamiroquai", albumArt: "img/jamiroquai.png" },
      { number: "07", title: "Drive", src: "music/Drive.mp3", album: "Make Yourself", artist: "Incubus", albumArt: "img/incubus.jpg" },
      { number: "08", title: "The Middle", src: "music/TheMiddle.mp3", album: "Bleed America", artist: "Jimmy Eat World", albumArt: "img/jimmyeatworld.jpg" },
+     { number: "09", title: "Banquet", src: "music/Banquet.mp3", album: "Silent Alarm", artist: "Bloc Party", albumArt: "img/blocparty.jpg" },
+
    ];
 
    let currentSongIndex = 0;
@@ -19,6 +21,7 @@ $(document).ready(function(){
    const $artistName = $("#artist-name");
    const $albumArt = $("#album-art");
    const $currentTimePlayed = $("#current-time-played");
+   const $anotherTimePlayed = $("#another-time-played");
 
    function loadSong(index, autoplay = false) {
      currentSongIndex = index;
@@ -39,9 +42,13 @@ $(document).ready(function(){
      const minutes = Math.floor(currentTime / 60);
      const seconds = Math.floor(currentTime % 60);
      $currentTimePlayed.text(`${minutes < 10 ? "0" : ""}${minutes}:${seconds < 10 ? "0" : ""}${seconds}`);
+     $anotherTimePlayed.text(`${minutes < 10 ? "0" : ""}${minutes}:${seconds < 10 ? "0" : ""}${seconds}`);
    }
 
-   $audioPlayer.on("timeupdate", updateTimePlayed);
+   $audioPlayer.on("timeupdate", function () {
+       updateTimePlayed($currentTimePlayed);
+       updateTimePlayed($anotherTimePlayed);
+   });
 
    $audioPlayer.on("ended", function () {
       const newIndex = (currentSongIndex + 1) % songs.length;
