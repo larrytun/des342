@@ -1,7 +1,15 @@
 $(document).ready(function(){
   const songs = [
-       { number: "01", title: "Seven Nation Army", src: "music/SevenNationArmy.mp3", album: "Elephant", artist: "The White Stripes", albumArt: "img/whitestripes.jpg" },
+     { number: "01", title: "Seven Nation Army", src: "music/SevenNationArmy.mp3", album: "Elephant", artist: "The White Stripes", albumArt: "img/whitestripes.jpg" },
+     { number: "02", title: "What I Got", src: "music/WhatIGot.mp3", album: "Sublime", artist: "Sublime", albumArt: "img/sublime.jpg" },
+     { number: "03", title: "My Own Worst Enemy", src: "music/MyOwnWorstEnemy.mp3", album: "A Place in the Sun", artist: "Lit", albumArt: "img/lit.jpg" },
+     { number: "04", title: "Ms. Jackson", src: "music/MsJackson.mp3", album: "Stankonia", artist: "OutKast", albumArt: "img/outkast.jpg" },
+     { number: "05", title: "Around The World", src: "music/AroundTheWorld.mp3", album: "Homework", artist: "Daft Punk", albumArt: "img/daftpunk.jpg" },
+     { number: "06", title: "Canned Heat", src: "music/CannedHeat.mp3", album: "Synkronized", artist: "Jamiroquai", albumArt: "img/jamiroquai.png" },
+     { number: "07", title: "Drive", src: "music/Drive.mp3", album: "Make Yourself", artist: "Incubus", albumArt: "img/incubus.jpg" },
+     { number: "08", title: "The Middle", src: "music/TheMiddle.mp3", album: "Bleed America", artist: "Jimmy Eat World", albumArt: "img/jimmyeatworld.jpg" },
    ];
+
    let currentSongIndex = 0;
 
    const $audioPlayer = $("#audio-player");
@@ -12,42 +20,52 @@ $(document).ready(function(){
    const $albumArt = $("#album-art");
    const $currentTimePlayed = $("#current-time-played");
 
-   function loadSong(index) {
-       currentSongIndex = index;
-       const song = songs[index];
-       $songNumber.text(song.number);
-       $songName.text(song.title);
-       $albumName.text(song.album);
-       $artistName.text(song.artist);
-       $albumArt.attr("src", song.albumArt);
-       $audioPlayer.attr("src", song.src);
+   function loadSong(index, autoplay = false) {
+     currentSongIndex = index;
+     const song = songs[index];
+     $songNumber.text(song.number);
+     $songName.text(song.title);
+     $albumName.text(song.album);
+     $artistName.text(song.artist);
+     $albumArt.attr("src", song.albumArt);
+     $audioPlayer.attr("src", song.src);
+     if (autoplay) {
+       $audioPlayer[0].play();
+      }
    }
 
    function updateTimePlayed() {
-       const currentTime = $audioPlayer[0].currentTime;
-       const minutes = Math.floor(currentTime / 60);
-       const seconds = Math.floor(currentTime % 60);
-       $currentTimePlayed.text(`${minutes < 10 ? "0" : ""}${minutes}:${seconds < 10 ? "0" : ""}${seconds}`);
+     const currentTime = $audioPlayer[0].currentTime;
+     const minutes = Math.floor(currentTime / 60);
+     const seconds = Math.floor(currentTime % 60);
+     $currentTimePlayed.text(`${minutes < 10 ? "0" : ""}${minutes}:${seconds < 10 ? "0" : ""}${seconds}`);
    }
 
    $audioPlayer.on("timeupdate", updateTimePlayed);
 
+   $audioPlayer.on("ended", function () {
+      const newIndex = (currentSongIndex + 1) % songs.length;
+      loadSong(newIndex, true);
+    });
+
    $("#play").on("click", function () {
-       $audioPlayer[0].play();
+     $audioPlayer[0].play();
    });
 
    $("#pause").on("click", function () {
-       $audioPlayer[0].pause();
+     $audioPlayer[0].pause();
    });
 
    $("#previous-song").on("click", function () {
-       const newIndex = currentSongIndex === 0 ? songs.length - 1 : currentSongIndex - 1;
-       loadSong(newIndex);
+     const newIndex = currentSongIndex === 0 ? songs.length - 1 : currentSongIndex - 1;
+     const isPlaying = !$audioPlayer[0].paused;
+     loadSong(newIndex, isPlaying);
    });
 
    $("#next-song").on("click", function () {
-       const newIndex = (currentSongIndex + 1) % songs.length;
-       loadSong(newIndex);
+     const newIndex = (currentSongIndex + 1) % songs.length;
+     const isPlaying = !$audioPlayer[0].paused;
+     loadSong(newIndex, isPlaying);
    });
 
    loadSong(0);

@@ -248,7 +248,10 @@ body {
   background-color: #C0C0C0;
   position: relative;
   width: 88px;
-  margin-bottom: 8px;
+  padding: 6px 0 5px 0;
+  margin-bottom: 4px;
+  font-family: times;
+  font-size: 11px;
 }
 
 .music_player img {
@@ -375,7 +378,7 @@ body {
   position: relative;
   display: inline-flex;
   font-size: 10px;
-  width: 50px;
+  width: 51px;
   height: calc(100% + 1px);
   right: 0;
   top: -0.5px;
