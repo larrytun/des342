@@ -48,13 +48,13 @@
                 <p>Music</p>
               </div>
             </div>
-            <div class="program">
-              <div id="scan" class="icon scan"></div>
+            <div id="scan" class="program">
+              <div class="icon scan"></div>
               <div class="name">
                 <p>Scan</p>
               </div>
             </div>
-            <div class="program">
+            <div id="photos" class="program">
               <div class="icon photos"></div>
               <div class="name">
                 <p>Photos</p>
@@ -72,7 +72,7 @@
           <div class="window_header">
             <div class="icon_xs music"></div>
             <h2 class="window_title">Music Player</h2>
-            <div id="close-sm" class="close_sm"></div>
+            <div id="close-01" class="close_sm"></div>
           </div>
           <div id="music-player" class="music_player">
             <div class="music_time">[<span id="song-number"></span>]&nbsp;<span id="current-time-played">00:00</span></div>
@@ -95,6 +95,19 @@
             <div class="half"></div>
           </div>
         </div>
+        <div class="photos_app">
+          <div class="window_header">
+            <div class="icon_xs music"></div>
+            <h2 class="window_title">Photos</h2>
+            <div id="close-03" class="close_sm"></div>
+          </div>
+          <div class="window_footer">
+            <div class="half">
+              <p>Successfully Scanned to Photos!</p>
+            </div>
+            <div class="half"></div>
+          </div>
+        </div>
         <div class="taskbar">
           <div class="start_button">
             <img src="img/windows.png" alt="windows 98 icon">
@@ -110,16 +123,14 @@
       <iframe class="oregon_program" width="100%" height="100%" src="https://archive.org/embed/oregon-trail-deluxe_202210" frameborder="0" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen></iframe>
       <div id="back_01" class="back_button">← <u>E</u>scape</div>
     </div>
-    <div class="scan_app on">
+    <div class="scan_app">
       <div class="window_header">
         <div class="icon_xs music"></div>
         <h2 class="window_title">Scanner</h2>
-        <div id="close-sm" class="close_sm"></div>
+        <div id="close-02" class="close_sm"></div>
       </div>
-      <input type="file" id="image-upload" accept="image/*">
-      <canvas id="image-canvas" style="display:none;"></canvas>
-      <img id="processed-image" alt="Processed Image">
-      <button id="download-image" style="display:none;">Download Processed Image</button>
+      <input type="file" id="image-upload" accept="image/*" multiple>
+      <div id="images-container"></div>
     </div>
     <div class="desk"></div>
     <div id="power" class="power_button"></div>

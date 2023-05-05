@@ -9,7 +9,6 @@ $(document).ready(function(){
      { number: "07", title: "Drive", src: "music/Drive.mp3", album: "Make Yourself", artist: "Incubus", albumArt: "img/incubus.jpg" },
      { number: "08", title: "The Middle", src: "music/TheMiddle.mp3", album: "Bleed America", artist: "Jimmy Eat World", albumArt: "img/jimmyeatworld.jpg" },
      { number: "09", title: "Banquet", src: "music/Banquet.mp3", album: "Silent Alarm", artist: "Bloc Party", albumArt: "img/blocparty.jpg" },
-
    ];
 
    let currentSongIndex = 0;
@@ -22,6 +21,71 @@ $(document).ready(function(){
    const $albumArt = $("#album-art");
    const $currentTimePlayed = $("#current-time-played");
    const $anotherTimePlayed = $("#another-time-played");
+
+   const $imageUpload = $("#image-upload");
+    const $imagesContainer = $("#images-container");
+
+    function processImage(image, callback) {
+        const canvas = document.createElement("canvas");
+        const ctx = canvas.getContext("2d");
+        const width = image.width;
+        const height = image.height;
+
+        // Set canvas dimensions
+        canvas.width = width;
+        canvas.height = height;
+
+        // Draw the downscaled image to the canvas
+        const scaleFactor = 0.25; // Adjust this value to control the pixel size
+        ctx.drawImage(image, 0, 0, width * scaleFactor, height * scaleFactor);
+        ctx.drawImage(canvas, 0, 0, width * scaleFactor, height * scaleFactor, 0, 0, width, height);
+
+        // Process the image to make it black and white
+        const imageData = ctx.getImageData(0, 0, width, height);
+        const data = imageData.data;
+        const threshold = 128; // Adjust this value to control the contrast
+        for (let i = 0; i < data.length; i += 4) {
+            const avg = (data[i] + data[i + 1] + data[i + 2]) / 3;
+            const color = avg > threshold ? 255 : 0;
+            data[i] = data[i + 1] = data[i + 2] = color;
+        }
+        ctx.putImageData(imageData, 0, 0);
+
+        // Save the processed image to the DOM
+        const $processedImage = $('<img class="processed-image" alt="Processed Image">');
+        $processedImage.attr("src", canvas.toDataURL("image/png"));
+        $imagesContainer.append($processedImage);
+
+        if (callback) callback();
+    }
+
+    function loadImage(file, callback) {
+        const reader = new FileReader();
+        reader.onload = function (e) {
+            const image = new Image();
+            image.onload = function () {
+                processImage(image, callback);
+            };
+            image.src = e.target.result;
+        };
+        reader.readAsDataURL(file);
+    }
+
+    $imageUpload.on("change", function (e) {
+        const files = e.target.files;
+        if (files.length > 0) {
+            let index = 0;
+
+            function processNext() {
+                if (index < files.length) {
+                    loadImage(files[index], processNext);
+                    index++;
+                }
+            }
+
+            processNext();
+        }
+    });
 
    function loadSong(index, autoplay = false) {
      currentSongIndex = index;
@@ -112,9 +176,20 @@ $(document).ready(function(){
   });
   $('#scan').click(function(){
     $('.wrapper').addClass('scanning');
+    $('.scan_app').addClass('on');
   });
-  $('#close-sm').click(function(){
+  $('#photos').click(function(){
+    $('.photos_app').addClass('on');
+  });
+  $('#close-01').click(function(){
     $('.music_app').removeClass('on');
+  });
+  $('#close-02').click(function(){
+    $('.wrapper').removeClass('scanning');
+    $('.scan_app').removeClass('on');
+  });
+  $('#close-03').click(function(){
+    $('.photos_app').removeClass('on');
   });
   $('#back_01').click(function(){
     $('.paint_program').removeClass('on');

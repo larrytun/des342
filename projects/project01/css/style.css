@@ -196,7 +196,7 @@ body {
   background-repeat: no-repeat;
 }
 
-.music_app, .scan_app {
+.music_app, .scan_app, .photos_app {
   position: absolute;
   padding: 1px;
   border: 1px solid;
@@ -209,12 +209,12 @@ body {
   pointer-events: none;
 }
 
-.music_app.on, .scan_app.on {
+.music_app.on, .scan_app.on, .photos_app.on {
   opacity: 1;
   pointer-events: all;
 }
 
-.music_app {
+.music_app, .photos_app {
   position: absolute;
   width: 390px;
   height: 230px;
@@ -492,6 +492,12 @@ body {
   height: 230px;
   left: 1070px;
   top: 490px;
+}
+
+.processed-image {
+  width: 300px;
+  max-width: 400px;
+  height: auto;
 }
 
 .power_button {
