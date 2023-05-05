@@ -139,6 +139,58 @@ body {
   font-size: 13px;
 }
 
+.window_header {
+  height: 18px;
+  background: linear-gradient(45deg, #0000AA, #0000AA, #0000AA, #0000AA, #0000AA, #0000AA, #0000AA, #0000AA, #0D80CE, #0000AA, #0000AA, #0000AA, #0000AA, #0000AA, #0000AA, #0000AA, #0000AA);
+  background-size: 400% 400%;
+  animation: gradient 4s ease infinite;
+  padding: 3px;
+  display: flex;
+}
+
+.window_header h2 {
+  color: white;
+  font-size: 10px;
+  font-weight: normal;
+  margin: 0;
+  margin: 1px 0px 0px 3px;
+}
+
+.window_header .icon_xs {
+  height: 100%;
+  width: 12px;
+  left: 2px;
+  top: 0;
+}
+
+.close_sm {
+  height: 13px;
+  width: 13px;
+  background-color: #C0C0C0;
+  position: absolute;
+  top: 4px;
+  right: 3px;
+}
+
+.close_sm::before {
+  content: '';
+  position: absolute;
+  margin-top: 2px;
+  height: 7px;
+  width: 100%;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-image: url("../img/x.png");
+}
+
+.icon_xs.music {
+  background-image: url("../img/music.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
 .music_app {
   position: absolute;
   width: 390px;
@@ -146,6 +198,19 @@ body {
   background-color: #C0C0C0;
   left: 22px;
   top: 30px;
+  padding: 1px;
+  border: 1px solid;
+  border-bottom-color: #808080;
+  border-right-color: #808080;
+  border-left-color: #DFDFDF;
+  border-top-color: #DFDFDF;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.music_app.on {
+  opacity: 1;
+  pointer-events: all;
 }
 
 .music_player img {
@@ -182,7 +247,8 @@ body {
   left: 0;
 }
 
-.start_button, .back_button {
+
+.start_button, .back_button, .close_sm {
   cursor: pointer;
   background-color: #C0C0C0;
   border: 1px solid;
@@ -230,7 +296,6 @@ body {
   height: calc(100% + 2px);
   width: 0;
   border: 1px solid;
-  right: -5px;
   top: -1px;
   border-right-color: white;
   border-left-color: #808080;
@@ -287,7 +352,7 @@ body {
   opacity: 1;
 }
 
-.start_button::after, .back_button::after {
+.start_button::after, .back_button::after, .close_sm::after, .music_app::after {
   content: '';
   width: calc(100% + 2px);
   height: calc(100% + 2px);
@@ -299,6 +364,7 @@ body {
   border-right-color: black;
   border-left-color: white;
   border-top-color: white;
+  pointer-events: none;
 }
 
 .paint_program, .lemmings_program, .oregon_program {
@@ -348,4 +414,13 @@ body {
 .power_button.on:active {
   background-color: #cf4e4e;
   box-shadow: 0px 0px 10px #cf4e4e;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }

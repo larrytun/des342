@@ -78,6 +78,12 @@ $(document).ready(function(){
     $('.oregon_program').toggleClass('on');
     $('.back_button').toggleClass('on');
   });
+  $('#music').click(function(){
+    $('.music_app').addClass('on');
+  });
+  $('#close-sm').click(function(){
+    $('.music_app').removeClass('on');
+  });
   $('#back_01').click(function(){
     $('.paint_program').removeClass('on');
     $('.lemmings_program').removeClass('on');
