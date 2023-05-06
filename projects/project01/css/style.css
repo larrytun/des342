@@ -442,7 +442,7 @@ body {
   font-weight: bold;
 }
 
-.start_button::before, .clock::before, {
+.start_button::before, .clock::before {
   content: '';
   position: absolute;
   height: calc(100% + 2px);
