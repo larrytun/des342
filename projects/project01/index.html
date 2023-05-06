@@ -101,10 +101,11 @@
             <h2 class="window_title">Photos</h2>
             <div id="close-03" class="close_sm"></div>
           </div>
-          <div id="images-container"></div>
+          <div id="images-container" class="gallery">
+          </div>
           <div class="window_footer">
             <div class="half">
-              <p>Successfully Scanned to Photos!</p>
+              <p>Total Images: <span id="uploaded-images-2">0</span></p>
             </div>
             <div class="half"></div>
           </div>
@@ -130,10 +131,21 @@
         <h2 class="window_title">Scanner</h2>
         <div id="close-02" class="close_sm"></div>
       </div>
-      <input type="file" id="image-upload" accept="image/*" multiple>
-      <button id="select-images">Select Images</button>
-      <button id="upload-button">Upload Images</button>
-      <p id="image-count">Images uploaded: <span id="uploaded-images">0</span></p>
+      <input type="file" id="image-upload" accept="image/*" multiple style="display: none;">
+      <p id="selected-files"></p>
+      <button id="select-images">Browse Files</button>
+      <button id="upload-button">Scan to Photos</button>
+      <div class="window_footer">
+        <div class="half">
+          <p>Photos Scanned: <span id="uploaded-images">0</span></p>
+        </div>
+        <div class="half">
+          <p>
+            <span class="loading_01">Processing...</span>
+            <span class="success_01">Successfully Scanned to Photos!</span>
+          </p>
+        </div>
+      </div>
     </div>
     <div class="desk"></div>
     <div id="power" class="power_button"></div>

@@ -88,6 +88,8 @@ $(document).ready(function() {
   const $selectImages = $("#select-images");
   const $uploadButton = $("#upload-button");
   const $uploadedImages = $("#uploaded-images");
+  const $uploadedImages2 = $("#uploaded-images-2");
+  const $selectedFilesDisplay = $("#selected-files");
   const $imagesContainer = $("#images-container");
   const buttonClickSound = new Audio("your_sound_file.mp3");
 
@@ -122,11 +124,17 @@ $(document).ready(function() {
     // Save the processed image to the DOM
     const $processedImage = $('<img class="processed-image" alt="Processed Image">');
     $processedImage.attr("src", canvas.toDataURL("image/png"));
+    $processedImage.attr("title", image.src.split('/').pop());
     $imagesContainer.append($processedImage);
+
+    const fileName = image.src.split('/').pop();
+    const $fileNameDisplay = $('<p>').text(fileName);
+    const $imageWrapper = $('<div>').append($processedImage.clone(), $fileNameDisplay);
 
     let currentCount = parseInt($uploadedImages.text(), 10);
     currentCount++;
     $uploadedImages.text(currentCount);
+    $uploadedImages2.text(currentCount);
 
     if (callback) callback();
   }
@@ -151,6 +159,15 @@ $(document).ready(function() {
 
   $imageUpload.on("change", function(e) {
     selectedFiles = e.target.files;
+    const fileNames = [];
+    for (let i = 0; i < selectedFiles.length; i++) {
+        let fileName = selectedFiles[i].name;
+        if (fileName.length > 16) {
+            fileName = fileName.substring(0, 16) + '...';
+        }
+        fileNames.push(fileName);
+    }
+    $selectedFilesDisplay.text("Selected files: " + fileNames.join(", "));
   });
 
   $uploadButton.on("click", function() {
@@ -261,6 +278,14 @@ $(document).ready(function() {
   });
   $('#photos').click(function() {
     $('.photos_app').addClass('on');
+  });
+  $('#select-images').click(function() {
+    $('.loading_01').addClass('on');
+    $('.success_01').removeClass('on');
+  });
+  $('#upload-button').click(function() {
+    $('.success_01').addClass('on');
+    $('.loading_01').removeClass('on');
   });
   $('#close-01').click(function() {
     $('.music_app').removeClass('on');

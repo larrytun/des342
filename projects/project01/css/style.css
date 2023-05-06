@@ -253,7 +253,7 @@ body {
   width: 179px;
 }
 
-.music_player button {
+.music_player button, .scan_app button {
   background-color: #C0C0C0;
   position: relative;
   width: 88px;
@@ -297,6 +297,40 @@ body {
 .music_info.album {
   top: 121px;
   left: 78px;
+}
+
+.gallery {
+  width: 98%;
+  margin: auto;
+  margin-top: 6px;
+  display: flex;
+  flex-wrap: wrap;
+  overflow-y: scroll;
+  height: 80%;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.gallery::-webkit-scrollbar {
+  display: none;
+}
+
+.photos_app .processed-image {
+  position: relative;
+  width: 90.7px;
+  height: 90.7px;
+  object-fit: cover;
+  object-position: 0 0;
+  border: 1px solid;
+  border-bottom-color: #808080;
+  border-right-color: #808080;
+  border-left-color: #DFDFDF;
+  border-top-color: #DFDFDF;
+  margin: 2px;
+}
+
+.photo_name {
+  font-size: 6px;
 }
 
 .window_footer {
@@ -354,7 +388,7 @@ body {
   left: 0;
 }
 
-.start_button, .back_button, .close_sm, .music_player button {
+.start_button, .back_button, .close_sm, .music_player button, .scan_app button  {
   cursor: pointer;
   background-color: #C0C0C0;
   border: 1px solid;
@@ -458,7 +492,7 @@ body {
   opacity: 1;
 }
 
-.start_button::after, .back_button::after, .close_sm::after, .music_app::after, .music_player button::after {
+.start_button::after, .back_button::after, .close_sm::after, .music_app::after, .music_player button::after, .scan_app button::after {
   content: '';
   width: calc(100% + 2px);
   height: calc(100% + 2px);
@@ -494,10 +528,12 @@ body {
   top: 490px;
 }
 
-.processed-image {
-  width: 300px;
-  max-width: 400px;
-  height: auto;
+.loading_01, .success_01 {
+  display: none;
+}
+
+.loading_01.on, .success_01.on {
+  display: block;
 }
 
 .power_button {
