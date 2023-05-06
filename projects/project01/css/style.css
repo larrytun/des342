@@ -189,11 +189,23 @@ body {
   background-image: url("../img/x.png");
 }
 
-.icon_xs.music {
+.icon_xs {
   background-image: url("../img/music.png");
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
+}
+
+.icon_xs.music {
+  background-image: url("../img/music.png");
+}
+
+.icon_xs.photos {
+  background-image: url("../img/photos.png");
+}
+
+.icon_xs.scan {
+  background-image: url("../img/scan.png");
 }
 
 .music_app, .scan_app, .photos_app {
@@ -222,7 +234,7 @@ body {
   top: 30px;
 }
 
-.music_time, .music_player img, .song_data {
+.music_time, .music_player img, .song_data, .file_name {
   border: inset 1px;
   border-top-color: #bebebe;
   border-left-color: #bebebe;
@@ -522,10 +534,38 @@ body {
 .scan_app {
   position: absolute;
   z-index: 99;
-  width: 390px;
-  height: 230px;
-  left: 1070px;
-  top: 490px;
+  width: 250px;
+  height: 130px;
+  left: 1100px;
+  top: 550px;
+}
+
+p.file_name {
+  background-color: white;
+  font-size: 12px;
+  width: 58%;
+  height: 20px;
+  display: inline-block;
+  margin: 7px 2px 0 4px;
+  padding: 4px;
+  text-align: right;
+}
+
+.scan_app button {
+  vertical-align: top;
+}
+
+.scan_app button:nth-of-type(1) {
+  margin: 7px 0 0;
+}
+
+.scan_app button:nth-of-type(2) {
+  margin-left: calc(50% - 43.5px);
+  margin-top: 21px;
+}
+
+.scan_app .window_footer {
+  height: 10.7%;
 }
 
 .loading_01, .success_01 {

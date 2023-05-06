@@ -91,7 +91,7 @@ $(document).ready(function() {
   const $uploadedImages2 = $("#uploaded-images-2");
   const $selectedFilesDisplay = $("#selected-files");
   const $imagesContainer = $("#images-container");
-  const buttonClickSound = new Audio("your_sound_file.mp3");
+  const buttonClickSound = new Audio("music/Scanner.mp3");
 
   let selectedFiles = null;
 
@@ -113,7 +113,7 @@ $(document).ready(function() {
     // Process the image to make it black and white
     const imageData = ctx.getImageData(0, 0, width, height);
     const data = imageData.data;
-    const threshold = 128; // Adjust this value to control the contrast
+    const threshold = 115; // Adjust this value to control the contrast
     for (let i = 0; i < data.length; i += 4) {
       const avg = (data[i] + data[i + 1] + data[i + 2]) / 3;
       const color = avg > threshold ? 255 : 0;
@@ -152,8 +152,6 @@ $(document).ready(function() {
   }
 
   $selectImages.on("click", function() {
-    // Play the button click sound
-    buttonClickSound.play();
     $imageUpload.click();
   });
 
@@ -163,14 +161,15 @@ $(document).ready(function() {
     for (let i = 0; i < selectedFiles.length; i++) {
         let fileName = selectedFiles[i].name;
         if (fileName.length > 16) {
-            fileName = fileName.substring(0, 16) + '...';
+            fileName = fileName.substring(0, 20) + '...';
         }
         fileNames.push(fileName);
     }
-    $selectedFilesDisplay.text("Selected files: " + fileNames.join(", "));
+    $selectedFilesDisplay.text(fileNames.join(", "));
   });
 
   $uploadButton.on("click", function() {
+    buttonClickSound.play();
     if (selectedFiles && selectedFiles.length > 0) {
       let index = 0;
 
